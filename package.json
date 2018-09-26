@@ -1,0 +1,34 @@
+{
+  "author": {
+    "name": "Chentan"
+  },
+  "bugs": {
+    "url": "https://github.com/cttaohua/gulp-rev-append-all2/issues"
+  },
+  "dependencies": {},
+  "description": "base on gulp-rev-append that replace \"?rev=@@hash\" with hash string and gulp-rev-append-all will not but append a hash string like \"?v=xxx\" to the end of ref in file.",
+  "devDependencies": {},
+  "directories": {
+    "test": "test"
+  },
+  "homepage": "https://github.com/cttaohua/gulp-rev-append-all2#readme",
+  "keywords": [
+    "gulp",
+    "gulp-rev-append",
+    "gulp-rev-append-all",
+		"gulp-rev-append-all2",
+    "gulpplugin",
+    "revision"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "gulp-rev-append-all2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cttaohua/gulp-rev-append-all2.git"
+  },
+  "scripts": {
+    "test": "node node_modules/.bin/cucumber-js"
+  },
+  "version": "0.1.0"
+}
