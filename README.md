@@ -1,16 +1,20 @@
-gulp-rev-append-all
+gulp-rev-append-all2
 ---
-> gulp plugin for cache-busting files using query string file hash
+> gulp插件用于使用查询字符串文件哈希值加载文件末尾破坏缓存文件
 
-[![Build Status](https://travis-ci.org/bustardcelly/gulp-rev-append.png?branch=master)](https://travis-ci.org/bustardcelly/gulp-rev-append)
+本插件是在[gulp-rev-append-all](https://github.com/OuIChien/gulp-rev-append-all)上改进而来，优化了[gulp-rev-append-all](https://github.com/OuIChien/gulp-rev-append-all)在使用过程中可能出现的两个问题
+---
+1、gulp-rev-append-all无法处理绝对路径，因为在绝对路径下它无法找到目标文件，本插件可传参数 'assets': '../public' 解决此问题
+2、gulp-rev-append-all无法第二次使用，原因是带了版本号的文件路径node不能读取，本插件已优化处理
 
-installation
+
+安装
 ---
 ```
 $ npm install gulp-rev-append-all2 --save-dev
 ```
 
-how?
+如何使用?
 ---
 _gulpfile.js_
 ```
@@ -23,17 +27,31 @@ gulp.task('rev', function() {
 });
 
 ```
+或者
+---
+```
+var rev = require('gulp-rev-append-all2');
+
+gulp.task('rev', function() {
+  gulp.src('./index.html')
+    .pipe(rev({
+			assets: '../public'   //html和静态资源的相对路径
+		}))
+    .pipe(gulp.dest('.'));
+});
+
+```
 
 _terminal_
 ```
 $ gulp rev
 ```
 
-what?
+原理?
 ---
-The [gulp-rev-append-all] is base on [gulp-rev-append](https://github.com/bustardcelly/gulp-rev-append) plugins allows for appending a query-string file hash to dependencies declared in html files defined using the following regex: `(?:href=|src=|url\()['|"]([^\s>"']+?)['|"]`
+[gulp-rev-append-all2] 是基于 [gulp-rev-append-all](https://github.com/OuIChien/gulp-rev-append-all)插件允许给链接追加一个查询文件根据数据摘要算法得到的哈希值，html文件中声明使用以下正则表达式: `(?:href=|src=|url\()['|"]([^\s>"']+?)['|"]`
 
-That's fancy talk for any stylesheet or script declarations that are declared in an html file such as the following:
+对于html文件中声明的任何样式表或脚本声明来说，这个可以防止浏览器缓存，如下所示:
 
 ```
 <!doctype html>
@@ -50,7 +68,7 @@ That's fancy talk for any stylesheet or script declarations that are declared in
 </html>
 ```
 
-will turn into something similar as the following after running `gulp-rev-append-all2`:
+运行完之后 `gulp-rev-append-all2`:
 ```
 <!doctype html>
 <html>
@@ -66,27 +84,7 @@ will turn into something similar as the following after running `gulp-rev-append
 </html>
 ```
 
-License
+分享
 ---
-Copyright (c) 2014 Todd Anderson
-
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without
-restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the
-Software is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+在实际的开发中我们处理静态资源加载通常会设置nginx的缓存时间为永不过期，然后我们要给css和js加个后缀，通常是日期，在上线的时候修改后缀，通知浏览器我们更新了css和js，让浏览器重新去加载。
+但是这种做法有个弊端，就是假如我们只修改了其中一个文件，但是浏览器要重新加载所以的文件。本插件完美的解决了这个问题，非常适用于使用gulp的多页面应用。
