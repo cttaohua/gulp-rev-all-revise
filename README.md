@@ -2,9 +2,11 @@ gulp-rev-append-all2
 ---
 > gulp插件用于使用查询字符串文件哈希值加载文件末尾破坏缓存文件
 
-本插件是在[gulp-rev-append-all](https://github.com/OuIChien/gulp-rev-append-all)上改进而来，优化了[gulp-rev-append-all](https://github.com/OuIChien/gulp-rev-append-all)在使用过程中可能出现的两个问题
+特此说明：
 ---
-1、gulp-rev-append-all无法处理绝对路径，因为在绝对路径下它无法找到目标文件，本插件可传参数 'assets': '../public' 解决此问题
+本插件是在[gulp-rev-append-all](https://github.com/OuIChien/gulp-rev-append-all)上改进而来，优化了[gulp-rev-append-all](https://github.com/OuIChien/gulp-rev-append-all)在使用过程中可能出现的两个问题      
+
+1、gulp-rev-append-all无法处理绝对路径，因为在绝对路径下它无法找到目标文件，本插件可传参数 'assets': '../public' 解决此问题      
 2、gulp-rev-append-all无法第二次使用，原因是带了版本号的文件路径node不能读取，本插件已优化处理
 
 
@@ -87,4 +89,4 @@ $ gulp rev
 分享
 ---
 在实际的开发中我们处理静态资源加载通常会设置nginx的缓存时间为永不过期，然后我们要给css和js加个后缀，通常是日期，在上线的时候修改后缀，通知浏览器我们更新了css和js，让浏览器重新去加载。
-但是这种做法有个弊端，就是假如我们只修改了其中一个文件，但是浏览器要重新加载所以的文件。本插件完美的解决了这个问题，非常适用于使用gulp的多页面应用。
+但是这种做法有个弊端，就是假如我们只修改了其中一个文件，但是浏览器要重新加载所有的文件。本插件完美的解决了这个问题，非常适用于使用gulp的多页面应用。
