@@ -3,29 +3,28 @@
     "name": "Chentan"
   },
   "bugs": {
-    "url": "https://github.com/cttaohua/gulp-rev-append-all2/issues"
+    "url": "https://github.com/cttaohua/gulp-rev-all-revise/issues"
   },
   "dependencies": {},
-  "description": "base on gulp-rev-append that replace \"?rev=@@hash\" with hash string and gulp-rev-append-all will not but append a hash string like \"?v=xxx\" to the end of ref in file.",
+  "description": "base on gulp-rev-append-all that replace \"?rev=@@hash\" with hash string and gulp-rev-append-all will not but append a hash string like \"?v=xxx\" to the end of ref in file.",
   "devDependencies": {},
   "directories": {
     "test": "test"
   },
-  "homepage": "https://github.com/cttaohua/gulp-rev-append-all2#readme",
+  "homepage": "https://github.com/cttaohua/gulp-rev-all-revise#readme",
   "keywords": [
     "gulp",
     "gulp-rev-append",
     "gulp-rev-append-all",
-		"gulp-rev-append-all2",
+		"gulp-rev-all-revise",
     "gulpplugin",
     "revision"
   ],
-  "license": "MIT",
   "main": "index.js",
-  "name": "gulp-rev-append-all2",
+  "name": "gulp-rev-all-revise",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cttaohua/gulp-rev-append-all2.git"
+    "url": "git+https://github.com/cttaohua/gulp-rev-all-revise.git"
   },
   "scripts": {
     "test": "node node_modules/.bin/cucumber-js"
