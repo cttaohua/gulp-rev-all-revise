@@ -1,4 +1,4 @@
-gulp-rev-append-all2
+gulp-rev-all-revise
 ---
 > gulp插件用于使用查询字符串文件哈希值加载文件末尾破坏缓存文件
 
@@ -13,14 +13,14 @@ gulp-rev-append-all2
 安装
 ---
 ```
-$ npm install gulp-rev-append-all2 --save-dev
+$ npm install gulp-rev-all-revise --save-dev
 ```
 
 如何使用?
 ---
 _gulpfile.js_
 ```
-var rev = require('gulp-rev-append-all2');
+var rev = require('gulp-rev-all-revise');
 
 gulp.task('rev', function() {
   gulp.src('./index.html')
@@ -32,7 +32,7 @@ gulp.task('rev', function() {
 或者
 ---
 ```
-var rev = require('gulp-rev-append-all2');
+var rev = require('gulp-rev-all-revise');
 
 gulp.task('rev', function() {
   gulp.src('./index.html')
@@ -51,7 +51,7 @@ $ gulp rev
 
 原理?
 ---
-[gulp-rev-append-all2] 是基于 [gulp-rev-append-all](https://github.com/OuIChien/gulp-rev-append-all)插件允许给链接追加一个查询文件根据数据摘要算法得到的哈希值，html文件中声明使用以下正则表达式: `(?:href=|src=|url\()['|"]([^\s>"']+?)['|"]`
+[gulp-rev-all-revise] 是基于 [gulp-rev-append-all](https://github.com/OuIChien/gulp-rev-append-all)插件允许给链接追加一个查询文件根据数据摘要算法得到的哈希值，html文件中声明使用以下正则表达式: `(?:href=|src=|url\()['|"]([^\s>"']+?)['|"]`
 
 对于html文件中声明的任何样式表或脚本声明来说，这个可以防止浏览器缓存，如下所示:
 
@@ -70,7 +70,7 @@ $ gulp rev
 </html>
 ```
 
-运行完之后 `gulp-rev-append-all2`:
+运行完之后 `gulp-rev-all-revise`:
 ```
 <!doctype html>
 <html>
